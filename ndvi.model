@@ -1,0 +1,132 @@
+{
+    "values": {
+        "inputs": {
+            "RASTERLAYER_RED": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 122.0, 
+                            "x": 138.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "RASTERLAYER_RED", 
+                            "showSublayersDialog": true, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "Reflect\u00e2ncia no vermelho (VIS)"
+                        }, 
+                        "class": "processing.core.parameters.ParameterRaster"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }, 
+            "RASTERLAYER_NIR": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 389.0, 
+                            "x": 138.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "RASTERLAYER_NIR", 
+                            "showSublayersDialog": true, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "Reflect\u00e2ncia no infra vermelho pr\u00f3ximo (NIR)"
+                        }, 
+                        "class": "processing.core.parameters.ParameterRaster"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }
+        }, 
+        "helpContent": {
+            "RASTERLAYER_RED": "Inserir banda referente a reflect\u00e2ncia no vermelho", 
+            "ALG_DESC": "O NDVI \u00e9 um indicador sens\u00edvel da quantidade e condi\u00e7\u00e3o da vegeta\u00e7\u00e3o, cujos valores variam no intervalo de -1 a 1. Nas superf\u00edcies que cont\u00eam \u00e1gua ou nuvens, esta varia\u00e7\u00e3o \u00e9 sempre menor do que 0.", 
+            "ALG_CREATOR": "Lu\u00eds Lopes", 
+            "OUTPUT_ALGGDALOGRRASTERCALCULATOR_1": "Raz\u00e3o entre a diferen\u00e7a das reflectividades das bandas no infravermelho pr\u00f3ximo e no vermelho e pela soma dessas mesmas refletividades (Equa\u00e7\u00e3o 4, Rouse et al., 1973). O formato de sa\u00edda \u00e9 o GeoTiff (.tif).", 
+            "RASTERLAYER_NIR": "Inserir banda referente a reflect\u00e2ncia no infravermelho pr\u00f3ximo", 
+            "ALG_VERSION": "0.1", 
+            "ALG_HELP_CREATOR": "geo.luislopes@gmail.com"
+        }, 
+        "group": "Raster", 
+        "name": "\u00cdndice da Vegeta\u00e7\u00e3o da Diferen\u00e7a Normalizada (NDVI)", 
+        "algs": {
+            "GDALOGRRASTERCALCULATOR_1": {
+                "values": {
+                    "name": "GDALOGRRASTERCALCULATOR_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "ndvi", 
+                                "pos": {
+                                    "values": {
+                                        "y": 342.0, 
+                                        "x": 528.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "pos": {
+                        "values": {
+                            "y": 263.0, 
+                            "x": 345.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "outputsFolded": true, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_F": null, 
+                        "BAND_F": "1", 
+                        "INPUT_D": null, 
+                        "INPUT_E": null, 
+                        "BAND_B": "1", 
+                        "BAND_C": "1", 
+                        "BAND_A": "1", 
+                        "RTYPE": 5, 
+                        "BAND_D": "1", 
+                        "NO_DATA": "-9999", 
+                        "BAND_E": "1", 
+                        "INPUT_C": null, 
+                        "FORMULA": "((A-B.astype(numpy.float32))/(A+B.astype(numpy.float32)))", 
+                        "INPUT_A": {
+                            "values": {
+                                "name": "RASTERLAYER_NIR"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }, 
+                        "INPUT_B": {
+                            "values": {
+                                "name": "RASTERLAYER_RED"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }, 
+                        "EXTRA": null
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:rastercalculator", 
+                    "description": "Raster calculator"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }
+        }
+    }, 
+    "class": "processing.modeler.ModelerAlgorithm.ModelerAlgorithm"
+}
